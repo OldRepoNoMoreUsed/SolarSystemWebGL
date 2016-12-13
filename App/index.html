@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <title>Solar System</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,18 +10,48 @@
     <script src="./js/tools/gl-matrix-min.js"></script>
     <script src="./js/tools/webglTools.js"></script>
     <script src="./debug/webgl-debug.js"></script>
-    <title>Solar System</title>
+
+    <!--import application script-->
+    <script src="./js/classes/ClassPlanetTest.js"></script>
+    <script src="./js/classes/Scene.js"></script>
+    <script src="./js/classes/Orbit.js"></script>
+
+    <!--Vertex Shader-->
+    <script id="shader-vs" type="x-shader/x-vertex">
+      attribute vec3 aVertexPosition;
+			attribute vec4 aColor;
+			uniform mat4 uMVMatrix;
+			uniform mat4 uPMatrix;
+			varying vec4 vColor;
+
+			void main(void) {
+				gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+				vColor = aColor;
+			}
+    </script>
+
+    <!--Fragment Shader-->
+    <script id="shader-fs" type="x-shader/x-fragment">
+			#ifdef GL_ES
+				precision highp float;
+			#endif
+			varying vec4 vColor;
+			void main(void) {
+				gl_FragColor = vColor;
+			}
+    </script>
+
   </head>
-  <body>
+  <body onload="initWebGL()">
     <script>
       displayTitle("Solar system by Sommer Nicolas", 1,1,1,1,1,1,1);
     </script>
     <br>
       Projet de simulation d'un systeme solaire en utilisant WebGL
     </br>
-    <canvas id="canvas-webgl" width="1000" height="1000">
+    <canvas id="webgl-canvas" width="900" height="800">
       HTML5 is not supported
     </canvas>
   </body>
-  <script srtc="./js/tools/mouseMotionHandling.js"></script>
+  <script src="./js/tools/mouseMotionHandling.js"></script>
 </html>

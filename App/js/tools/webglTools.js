@@ -12,16 +12,18 @@ function degToRad(degrees) {
  * Allow to initialize Shaders.
  */
 function initShader(id) {
+
     var shader, str, script, shaderChild;
     script = document.getElementById(id);
-    if (!script) throw new BadInitShaderException("can't find shader with id " + id);
 
+    if (!script) throw new BadInitShaderException("can't find shader with id " + id);
     str = "";
     shaderChild = script.firstChild;
     while (shaderChild) {
         if (shaderChild.nodeType == 3) str += shaderChild.textContent;
         shaderChild = shaderChild.nextSibling;
     }
+
 
     if (script.type == "x-shader/x-fragment") shader = glContext.createShader(glContext.FRAGMENT_SHADER);
     else if (script.type == "x-shader/x-vertex") shader = glContext.createShader(glContext.VERTEX_SHADER);
@@ -42,6 +44,7 @@ function initShader(id) {
  * The vertex shader and the fragment shaders together are called through that program.
  */
 function initProgram() {
+
     var fgShader = initShader("shader-fs");
     var vxShader = initShader("shader-vs");
 
