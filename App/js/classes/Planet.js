@@ -39,34 +39,9 @@ class Planet{
   initvertices(){
 
     this.vertices.push(-this.radius, -this.radius, this.radius);
-    this.vertices.push(this.radius, -this.radius, this.radius);
-    this.vertices.push(this.radius, this.radius, this.radius);
-    this.vertices.push(-this.radius, this.radius, this.radius);
-
-    this.vertices.push(-this.radius, -this.radius, -this.radius);
-    this.vertices.push(-this.radius, this.radius, -this.radius);
-    this.vertices.push(this.radius, this.radius, -this.radius);
     this.vertices.push(this.radius, -this.radius, -this.radius);
-
     this.vertices.push(-this.radius, this.radius, -this.radius);
-    this.vertices.push(-this.radius, this.radius, this.radius);
     this.vertices.push(this.radius, this.radius, this.radius);
-    this.vertices.push(this.radius, this.radius, -this.radius);
-
-    this.vertices.push(-this.radius, -this.radius, -this.radius);
-    this.vertices.push(this.radius, -this.radius, -this.radius);
-    this.vertices.push(this.radius, -this.radius, this.radius);
-    this.vertices.push(-this.radius, -this.radius, this.radius);
-
-    this.vertices.push(this.radius, -this.radius, -this.radius);
-    this.vertices.push(this.radius, this.radius, -this.radius);
-    this.vertices.push(this.radius, this.radius, this.radius);
-    this.vertices.push(this.radius, -this.radius, this.radius);
-
-    this.vertices.push(-this.radius, -this.radius, -this.radius);
-    this.vertices.push(-this.radius, -this.radius, this.radius);
-    this.vertices.push(-this.radius, this.radius, this.radius);
-    this.vertices.push(-this.radius, this.radius, -this.radius);
   }
 
   initcolors(){
@@ -74,43 +49,11 @@ class Planet{
     this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
     this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
     this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-    this.colors.push(this.color.r, this.color.g, this.color.b,1.0);
-
   }
 
   initindices(){
     //this.indices.push(0, 1, 2);
-    this.indices = [
-    0,  1,  2,      0,  2,  3,    // front
-    4,  5,  6,      4,  6,  7,    // back
-    8,  9,  10,     8,  10, 11,   // top
-    12, 13, 14,     12, 14, 15,   // bottom
-    16, 17, 18,     16, 18, 19,   // right
-    20, 21, 22,     20, 22, 23];    // left
+    this.indices = [0, 1, 2, 0, 3, 2, 3, 1];
 
   }
 
@@ -144,6 +87,6 @@ class Planet{
     glContext.bindBuffer(glContext.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
 
     //Dessinons le cube en LINES
-    glContext.drawElements(glContext.TRIANGLE_STRIP, this.indices.length, glContext.UNSIGNED_SHORT, 0);
+    glContext.drawElements(glContext.LINES, this.indices.length, glContext.UNSIGNED_SHORT, 0);
   }
 }
