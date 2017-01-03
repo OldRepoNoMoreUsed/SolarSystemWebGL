@@ -87,6 +87,6 @@ class Planet{
     glContext.bindBuffer(glContext.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
 
     //Dessinons le cube en LINES
-    glContext.drawElements(glContext.LINES, this.indices.length, glContext.UNSIGNED_SHORT, 0);
+    glContext.drawElements(glContext.LINE_STRIP, this.indices.length, glContext.UNSIGNED_SHORT, 0);
   }
 }
